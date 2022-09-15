@@ -31,3 +31,8 @@ Urls.py --> Implementasi Urls.py adalah dengan ditambahkan path('katalog/', incl
 katalog.html --> Program akan mengimplementasikan katalog.html untuk rendering, sehingga data pada katalog.html-lah yang akan digunakan untuk ditampilkan. Oleh karena itu, untuk menambahkan data tambahan berupa nama dan npm diperlukanlah curly bracket yang berisi variabel tersebut {{nama}} dan {{npm}}, serta program juga akan melakukan looping untuk mengambil data pada database yang akan disimpan ke dalam variabel list_catalog.
 
 Deploy --> Implementasi deploy adalah untuk menghubungkan project secara realtime ke heroku dengan cara deploy melalui github. Deploy dapat dilakukan dengan menghubungkan (connect) repository github project dan akun heroku dengan menambahkan variabel HEROKU_APP_NAME dan HEROKU_API_KEY pada repositry secret.
+
+Referensi Tugas:
+https://www.petanikode.com/html-link/
+https://kodewebsite.com/2015/06/mengubah-background-html.html
+https://colorhunt.co/palettes/red
