@@ -2,9 +2,9 @@
 
  {% block content %}
 
-  <h1 style= "text-align:center; background-color: #D9F8C4; color: #ffffff; font-family: 'Josefin Sans';" >
+  <h1 style= "text-align:center; background-color: #4C3A51; color: #ffffff; font-family: 'Josefin Sans';" >
     Lab 1 Assignment PBP/PBD</h1>
-<body style= "font-family: 'Josefin Sans'; background-color: #F9F9C5; color: #ffffff;">
+<body style= "font-family: 'Josefin Sans'; background-color: #774360; color: #ffffff;">
   <h5 style= "font-size: 24px;">Name: </h5>
   <p style= "font-size: 24px;">{{nama}}</p>
 
@@ -12,7 +12,7 @@
   <p style= "padding-bottom: 20px; font-size: 20px;">{{id}}</p>
 
   <table style= "border-collapse: collapse; overflow: hidden;">
-    <tr style= "text-transform: uppercase; background-color: #D9F8C4;">
+    <tr style= "text-transform: uppercase; background-color: #4C3A51;">
       <th>Item Name</th>
       <th>Item Price</th>
       <th>Item Stock</th>
@@ -23,12 +23,12 @@
     {% comment %} Add the data below this line {% endcomment %}
     {% for barang in list_catalog %}
     <tr style="font-family: 'Josefin Sans'; color: rgb(0, 0, 0);">
-        <th style= "text-align: center; background-color: #FAD9A1"></thstyle>{{barang.item_name}}</th>
-        <th style= "text-align: center; background-color: #F37878">{{barang.item_price}}</th>
-        <th style= "text-align: center; background-color: #FAD9A1">{{barang.item_stock}}</th>
-        <th style= "text-align: center; background-color: #F37878">{{barang.rating}}</th>
-        <th style= "text-align: center; background-color: #FAD9A1">{{barang.description}}</th>
-        <th style= "text-align: center; background-color: #F37878">{{barang.item_url}}</th>
+        <th style= "text-align: center; background-color: #B25068"></thstyle>{{barang.item_name}}</th>
+        <th style= "text-align: center; background-color: #E7AB79">{{barang.item_price}}</th>
+        <th style= "text-align: center; background-color: #B25068">{{barang.item_stock}}</th>
+        <th style= "text-align: center; background-color: #E7AB79">{{barang.rating}}</th>
+        <th style= "text-align: center; background-color: #B25068">{{barang.description}}</th>
+        <th style= "text-align: center; background-color: #E7AB79">{{barang.item_url}}</th>
     </tr>
     {% endfor %}
   </table>
