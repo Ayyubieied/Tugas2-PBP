@@ -16,12 +16,14 @@ Bagan / Pola request client ke web aplikasi berbasis Django diawali melalui perm
 
 ## Virtual Environment
 **Kenapa menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?**
+
 Venv atau Virtual Environment merupakan environment manager yang disediakan oleh phyton sebagai alat untuk membuat scope virtual secara terisolasi. Virtual environment nantinya akan mengisolasi package dan dependecies dari aplikasi yang ada pada project, sehingga tidak terjadi crash dengan versi lain yang ada pada device. 
 
 Venv akan memastikan seluruh data yang ada di library project tidak akan berubah pada storage local device dan hanya akan berubah di virtual environtment env. Hal tersebut dilakukan untuk mencegah perbedaan versi data pada project dikarenakan oleh perbedaan atau lebih dari satu versi Django yang berada pada device.
 
 ## Implementasi
 **Jelaskan bagaimana cara kamu mengimplementasikan poin 1 sampai dengan 4 di atas.**
+
 Views.py --> Implementasi Views.py adalah untuk mengambil semua data yang ada di database dengan menambahkan beberapa variable tambahan seperti nama dan npm yang akan disimpan melalui varibel context serta akan ikut di render saat pemanggilan fungsi show_catalog sehingga data tersebut juga akan terdapat pada template (HTML) 
 
 Urls.py --> Implementasi Urls.py adalah dengan ditambahkan path('katalog/', include('katalog.urls')). Path tersebut berfungsi untuk Rounting '/katalog' dengan katalog/urls.py supaya menjalankan fungsi show_catalog yang terdapat pada katalog.views.py
