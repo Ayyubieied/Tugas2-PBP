@@ -34,17 +34,9 @@ def show_mywatchlist(request):
     return render(request, "mywatchlist.html", context)
 
 def mywatchlist_xml(request):
-    data = MyWatchList.objects.all()
-    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+    data_film = MyWatchList.objects.all()
+    return HttpResponse(serializers.serialize("xml", data_film), content_type="application/xml")
 
 def mywatchlist_json(request):
-    data = MyWatchList.objects.all()
-    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
-
-# def mywatchlist_xml_by_id(request, id):
-#     data = MyWatchList.objects.filter(pk=id)
-#     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
-
-# def mywatchlist_json_by_id(request, id):
-#     data = MyWatchList.objects.filter(pk=id)
-#     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+    data_film = MyWatchList.objects.all()
+    return HttpResponse(serializers.serialize("json", data_film), content_type="application/json")
