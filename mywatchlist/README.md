@@ -18,6 +18,7 @@ JSON    : [Link HerokuApp JSON](https://tugas2-ayyubie.herokuapp.com/mywatchlist
 **1. Jelaskan perbedaan antara JSON, XML, dan HTML!**
 
 Sebelum menjelaskan mengenai perbedaannya, kita perlu mengetahui definisi dari masing-masing tipe:
+
 *Dikutip dari Wikipedia https://www.wikipedia.org/*
 > **HTML (HyperText Markup Language)** adalah suatu bahasa yang menggunakan tanda-tanda tertentu (tag) untuk menyatakan kode-kode yang harus ditafsirkan oleh browser agar halaman tersebut dapat ditampilkan secara benar
 
