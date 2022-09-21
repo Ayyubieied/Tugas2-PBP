@@ -20,7 +20,9 @@ JSON    : [Link HerokuApp JSON](https://tugas2-ayyubie.herokuapp.com/mywatchlist
 Sebelum menjelaskan mengenai perbedaannya, kita perlu mengetahui definisi dari masing-masing tipe:
 *Dikutip dari Wikipedia https://www.wikipedia.org/*
 > **HTML (HyperText Markup Language)** adalah suatu bahasa yang menggunakan tanda-tanda tertentu (tag) untuk menyatakan kode-kode yang harus ditafsirkan oleh browser agar halaman tersebut dapat ditampilkan secara benar
+
 > **XML (Extensible Markup Language)** adalah bahasa markup untuk keperluan umum yang disarankan oleh W3C untuk membuat dokumen markup keperluan pertukaran data antar sistem yang beraneka ragam. XML merupakan kelanjutan dari HTML (HyperText Markup Language) yang merupakan bahasa standar untuk melacak Internet.
+
 > **JSON (JavaScript Object Notation)** adalah sebuah format untuk menyimpan dan menukar informasi yang dapat dibaca oleh manusia.
 
 Sehingga berdasarkan penjelasan tersebut, kita dapat mengetahui bahwa HTML (Hypertext Markup Language) dan XML (JavaScript Object Notation) merupakan sebuah *markup language* atau bahasa komputer yang biasanya menggunakan tags atau tanda. Meskipun keduanya merupakan sebuah *markup language*, tetapi HTML dan XML memiliki karakteristiknya tersendiri. HTML merupakan sebuah *markup language* yang menggunakan element tree untuk mewakilkan datanya dan dapat dimodifikasi tampilannya agar menghasilkan suatu tampilan secara benar (tampilan yang diinginkan oleh User). Sementara itu, XML merupakan *markup language* yang lebih difokuskan dan disarankan oleh W3C untuk keperluan data storage and delivery. Hal tersebut dikarenakan XML merupakan content driven dan HTML lebih ke format driven. Sehingga dapat kita simpulkan bahwa HTML lebih berfokus pada *data presentation* dan XML lebih fokus pada *data transfer*.
@@ -72,7 +74,5 @@ Data delivery merupakan suatu kumpulan data yang tersedia dan dapat digunakan at
 4. https://id.wikipedia.org/wiki/JSON
 
 5. https://www.petanikode.com/markdown-pemula/
-
-
 
 
