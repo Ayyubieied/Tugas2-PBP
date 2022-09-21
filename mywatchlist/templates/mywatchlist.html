@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+  <h1 style= "text-align:center; padding: 10px; background-color: #16213E; color: #ffffff; font-family: 'Josefin Sans';" >
+    Task 3 Assignment PBP/PBD</h1>
+<body style= "font-family: 'Josefin Sans'; background-color: #0F3460; color: #ffffff;">
+  <h5 style= "font-size: 24px;">Name: </h5>
+  <p style= "font-size: 24px;">Ied Mubaraque Sultan Salahuddine El Ayyubie</p>
+
+  <h5 style= "font-size: 24px;">Student ID: </h5>
+  <p style= "font-size: 24px;">2106751120</p>
+
+  <table style= "border-collapse: collapse; margin-left: auto; margin-right: auto;">
+    
+    <tr style= "background-color: #16213E;">
+      <th style= "padding: 10px">Watched</th>
+      <th style= "padding: 10px">Title</th>
+      <th style= "padding: 10px">Rating</th>
+      <th style= "padding: 10px">Release Date</th>
+      <th style= "padding: 10px">Review</th>
+    </tr>
+    {% comment %} Add the data below this line {% endcomment %}
+    {% for film in list_film %}
+    <tr style="font-family: 'Josefin Sans'; color: rgb(0, 0, 0);">
+        <th style= "text-align: center; padding: 10px; background-color: #7FBCD2"></thstyle>{{film.watched}}</th>
+        <th style= "text-align: center; padding: 10px; background-color: #A5F1E9">{{film.title}}</th>
+        <th style= "text-align: center; padding: 10px; background-color: #7FBCD2">{{film.rating}}</th>
+        <th style= "text-align: center; padding: 10px; background-color: #A5F1E9">{{film.release_date}}</th>
+        <th style= "text-align: center; padding: 10px; background-color: #7FBCD2">{{film.review}}</th>
+    </tr>
+    {% endfor %}
+  </table>
+  <h3 style="text-align: center;">Watched Films : {{sum_watched}}</h3> 
+  <h3 style="text-align: center;">Haven't Watched Films : {{sum_not_watched}}</h3>
+  <h2 style="text-align: center">{{bonus}}</h2>
+</body>
+ {% endblock content %}

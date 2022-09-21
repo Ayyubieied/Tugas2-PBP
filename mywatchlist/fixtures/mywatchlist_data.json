@@ -1,0 +1,115 @@
+[
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":1,
+        "fields":{
+            "watched" : true,
+            "title": "Star wars : The Last Jedi",
+            "rating": "8.1",
+            "release_date" : "2017-12-9",
+            "review" : "Aku ingin menjadi Jedi"
+        }
+    },
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":2,
+        "fields":{
+            "watched" : false,
+            "title": "Saving Private Ryan",
+            "rating": "8.6",
+            "release_date" : "1998-6-24",
+            "review" : "Kasian saudaranya mati semua"
+        }
+    },
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":3,
+        "fields":{
+            "watched" : true,
+            "title": "Kimi no Nawa",
+            "rating": "8.4",
+            "release_date" : "2016-6-3",
+            "review" : "Cinta beda timeline berakhir bahagia"
+        }
+    },
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":4,
+        "fields":{
+            "watched" : true,
+            "title": "The Medium",
+            "rating": "6.5",
+            "release_date" : "2021-10-14",
+            "review" : "Keturuan dukun membuat dewa marah"
+        }
+    },
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":5,
+        "fields":{
+            "watched" : false,
+            "title": "IT",
+            "rating": "7.3",
+            "release_date" : "2019-1-9",
+            "review" : "Badut balon merah pemakan anak"
+        }
+    },
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":6,
+        "fields":{
+            "watched" : true,
+            "title": "Spider-Man : No way Home",
+            "rating": "8.3",
+            "release_date" : "2021-12-13",
+            "review" : "Spider-man berbagai multiverse bersatu"
+        }
+    },
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":7,
+        "fields":{
+            "watched" : false,
+            "title": "Girl From Nowhere",
+            "rating": "7.6",
+            "release_date" : "2018-8-8",
+            "review" : "Masih menjadi misteri siapa nano"
+        }
+    },
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":8,
+        "fields":{
+            "watched" : true,
+            "title": "Demon Slayer",
+            "rating": "8.7",
+            "release_date" : "2021-12-5",
+            "review" : "Animasi dengan Artwork terbaik"
+        }
+    },
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":9,
+        "fields":{
+            "watched" : true,
+            "title": "Doraemon : Stand By Me",
+            "rating": "7.5",
+            "release_date" : "2020-11-20",
+            "review" : "Akhirnya nobita nikah dengan sizuka"
+        }
+    },
+    {
+        "model":"mywatchlist.MyWatchList",
+        "pk":10,
+        "fields":{
+            "watched" : true,
+            "title": "Squid Game",
+            "rating": "8.0",
+            "release_date" : "2021-9-17",
+            "review" : "Orang miskin menjadi tontonan orang kaya"
+        }
+    }
+    
+        
+    
+]
