@@ -21,7 +21,7 @@ def show_todolist(request):
         'todo_list' : data,
         'last_login': var,
     }
-    return render(request, context, "todolist.html")
+    return render(request, "todolist.html", context)
 
 def register(request):
     form = UserCreationForm()
