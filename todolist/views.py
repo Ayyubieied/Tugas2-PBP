@@ -21,7 +21,7 @@ def show_todolist(request):
         'todo_list' : data,
         'last_login': var,
     }
-    return render(request, "todolist.html", context)
+    return render(request, context, "todolist.html")
 
 def register(request):
     form = UserCreationForm()
@@ -85,3 +85,4 @@ def set_status(request, id):
     data.save()
     response = HttpResponseRedirect(reverse("todolist:show_todolist"))
     return response
+    

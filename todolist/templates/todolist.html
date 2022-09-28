@@ -3,7 +3,7 @@
  {% block content %}
 
   <h1 style= "text-align:center; padding: 10px; border-radius: 10px 10px 10px 10px; box-shadow: 5px 5px 5px; background-color: #16213E; color: #ffffff; font-family: 'Josefin Sans';" >
-    Task 3 Assignment PBP/PBD</h1>
+    Task 4 Assignment PBP/PBD</h1>
 <body style= "font-family: 'Josefin Sans'; background-color: #0F3460; color: #ffffff; ">
   <h4 style= "text-align:center; font-size: 24px;">Name: </h5>
   <p style= "text-align:center; font-size: 24px;">{{username}}/p>
@@ -20,7 +20,7 @@
     <th style="padding: 10px;">Delete Task</th>
     </tr>
     {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
-    {% for task in Task %}
+    {% for task in todo_list %}
     <tr style="font-family: 'Josefin Sans'; color: rgb(0, 0, 0);">
         <th style= "text-align: center; padding: 10px; background-color: #7FBCD2"></thstyle>{{task.date}}</th>
         <th style= "text-align: center; padding: 10px; background-color: #A5F1E9">{{task.title}}</th>
