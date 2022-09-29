@@ -26,13 +26,21 @@ User akan memasukkan data melalui form HTML yang telah dirender, kemudian data t
 **4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.**
 
 [x] Membuat suatu aplikasi baru bernama todolist di proyek tugas Django yang sudah digunakan sebelumnya dengan menjalankan program ``python manage.py startapp todolist`` pada direktori cmd.
+
 [x] Menambahkan path todolist sehingga pengguna dapat mengakses http://localhost:8000/todolist.
+
 [x] Membuat sebuah model Task yang memiliki atribut user, date, title, description dengan fields sesuai dengan ketentuan.
+
 [x] Mengimplementasikan form registrasi, login, dan logout dengan mengimplementasikan 3 fungsi yaitu register, login_user, dan logout_user pada ``views.py`` untuk menghandle logic register, login, dan logout. Serta membuat 2 template HTML bernama ``login.html`` dan ``register.html`` agar pengguna dapat menggunakan to do list dengan baik.
+
 [x] Membuat halaman utama todolist dengan mengimplementasikan ``todolist.html`` yang memuat username pengguna, tombol Tambah Task Baru, tombol logout, serta tabel yang menampilkan isi dari ``show_todolist`` yang berisi tanggal pembuatan task, judul task, dan deskripsi task.
+
 [x] Membuat sebuah template HTML bernama ``add.html`` untuk ditampilkan ke user ketika akan membuat task baru. Selanjutnya, menambahkan sebuah fungsi add_task pada ``views.py`` untuk menghandle logic pembuatan model task yang baru.
+
 [x] Membuat routing untuk mengakses fungsi-fungsi yang bersangkutan di ``views.py`` dengan menambahkan path url yang sesuai pada ``urls.py``.
+
 [x] Melakukan deployment ke Heroku 
+
 [x] Membuat dua akun pengguna dan tiga dummy data menggunakan model Task pada akun masing-masing di situs web Heroku
 
 ~ Akun Dummy Pertama ~
