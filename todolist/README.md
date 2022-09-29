@@ -35,7 +35,18 @@ User akan memasukkan data melalui form HTML yang telah dirender, kemudian data t
 [x] Melakukan deployment ke Heroku 
 [x] Membuat dua akun pengguna dan tiga dummy data menggunakan model Task pada akun masing-masing di situs web Heroku
 
+~ Akun Dummy Pertama ~
+- Username : ied.mubaraque
 
+- Password : sultanied25
 
+![Dummy1]('../../dummy1.png?raw=true')
+
+~ Akun Dummy Pertama ~
+- Username : ayyubie
+
+- Password : sultanied25
+
+![Dummy2]('../../dummy2.png?raw=true')
 
 
