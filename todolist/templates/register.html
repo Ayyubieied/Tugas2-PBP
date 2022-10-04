@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 {% block meta %}
+<section class="vh-100" style="background-image: linear-gradient(to right, #FFF6BF, #ABD9FF);">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="card text-center m-2 shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-body align-items-center p-5 text-center">
 <title>Registrasi Akun</title>
 {% endblock meta %}
 
@@ -8,17 +13,19 @@
 
 <div class = "login">
     
-    <h1>Formulir Registrasi</h1>  
+    <h2>Sign Up</h2>  
 
         <form method="POST" >  
             {% csrf_token %}  
-            <table>  
+            <div class="table-responsive">
+            <table style="margin: auto; text-align:end;" class="table text-start table-borderless">  
                 {{ form.as_table }}  
+            </div>
+            </table> 
                 <tr>  
                     <td></td>
                     <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
+                </tr>   
         </form>
 
     {% if messages %}  
