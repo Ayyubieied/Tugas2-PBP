@@ -1,48 +1,73 @@
 {% extends 'base.html' %}
 
  {% block content %}
+ <head> 
+    <title> Todolist </title>
 
-  <h1 style= "text-align:center; padding: 10px; border-radius: 10px 10px 10px 10px; box-shadow: 5px 5px 5px; background-color: #16213E; color: #ffffff; font-family: 'Josefin Sans';" >
-    Task 4 Assignment PBP/PBD</h1>
-<body style= "font-family: 'Josefin Sans'; background-color: #0F3460; color: #ffffff; ">
-  <h1 style="text-align: center;">To-Do List</h2>
-  <h4 style= "text-align:center; font-size: 24px;">Name: </h5>
-  <p style= "text-align:center; font-size: 24px;">{{username}}>
+ </head>
+ <body style="background-image: linear-gradient(to right, #FFF6BF, #ABD9FF);">
+    <header>
+        <div class="container-fluid p-0">
+          <nav class="navbar navbar-expand-lg" style="background-image: linear-gradient(to left, #16213E, #126E82, #FFAB4C);">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Todolist</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <div style="margin-right: auto"></div>
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link disabled" style="color: #EEEEEE;">{{username}}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" style="color: #DFD3C3;" href="{% url 'todolist:add_todolist' %}">NewTask</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" style="color: #FF0000;" href="{% url 'todolist:logout' %}">Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+    </header>
+
+    <main>
+      <h2 class="mt-5" style="text-align: center; font-family: Lucida Console;">Hi, {{username}}👋🏻</h2>
+      <h5 class="mb-5" style="text-align: center; font-family: Lucida Console;">Let's do your todolist!</h5>
+
+      <div class="row row-cols-md-4 mx-auto" style="width: 90%; border-collapse: collapse; ">
+        {% for task in todo_list %}
+        <div class="col">
+          <div class="card border-primary mb-3">
+            <div class="card-body">
+              <h3 class="card-title">{{task.title}}</h3>
+              <h7 class="card-subtitle">{{task.date}}</h7>
+              <p class="card-text">{{task.description}}</p>
+              <p class="card-text">
+                {% if task.is_finished %}
+                Finished✅
+                {% else %}
+                On Progress🚫
+                {% endif %}
+              </p>
+              <p style="text-align: center;">
+                <a style="width: 5rem;" class="btn login_btn btn btn-danger form-control lg" href="delete/{{ task.id }}">Delete</a>
+                <a style="width: 5rem;" class="btn login_btn btn btn-info form-control lg" href="toggle/{{ task.id }}">Status</a></p>
+              </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </main>
+
+    <footer>
+      <h5 style="text-align: center;">Sesi terakhir login: {{ last_login }}</h5>
+    </footer>
 
 
-  <table style= "border-collapse: collapse; margin-left: auto; margin-right: auto; border-radius: 10px 10px 10px 10px; overflow: hidden; box-shadow: 8px 8px 8px #131e2c;">
-    <tr style= "background-color: #16213E;">
-    <th style="padding: 10px;">Date</th>
-    <th style="padding: 10px;">Task</th>
-    <th style="padding: 10px;">Description</th>
-    <th style="padding: 10px;">Status</th>
-    <th style="padding: 10px;">Toggle Status</th>
-    <th style="padding: 10px;">Delete Task</th>
-    </tr>
-    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
-    {% for task in todo_list %}
-    <tr style="font-family: 'Josefin Sans'; color: rgb(0, 0, 0);">
-        <th style= "text-align: center; padding: 10px; background-color: #7FBCD2"></thstyle>{{task.date}}</th>
-        <th style= "text-align: center; padding: 10px; background-color: #A5F1E9">{{task.title}}</th>
-        <th style= "text-align: center; padding: 10px; background-color: #7FBCD2">{{task.description}}</th>
-        <td style="text-align: center; padding: 15px; background-color: #A5F1E9">
-          {% if task.is_finished %}
-          Selesai
-          {% else %}
-          Belum Selesai
-          {% endif %}
-      </td>
-      <td style="background-color: #7FBCD2"><button><a href="toggle/{{ task.id }}">Toggle</a></td></button>
-      <td style="background-color: #A5F1E9"><button><a href="delete/{{ task.id }}">Delete</a></td></button>
-    </tr>
-    {% endfor %}
-  </table>
-  <p>&nbsp;</p>
-  <div class="button-center">
-    <button style="text-align: center;"><a href="{% url 'todolist:add_todolist' %}">Tambah Task Baru</a></button>
-    <button style="text-align: center;"><a href="{% url 'todolist:logout' %}">Logout</a></button>
-  </div>
-
-  <h5 style="text-align: center;">Sesi terakhir login: {{ last_login }}</h5>
+ </body>
 
 {% endblock content %}
