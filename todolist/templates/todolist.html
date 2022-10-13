@@ -39,7 +39,7 @@
               <h5 class="card-title">${data[i].fields.title}</h5>
               <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.date}</h6>
               <p class="card-text">${data[i].fields.description}</p>
-              <button type="button" class="btn btn-outline-success"><a href="toggle/${data[i].pk}" style="text-decoration: none;color: black;">Status</a></button>
+              <button type="button" class="btn btn-outline-success"><a href="toggle/${data[i].pk}" style="text-decoration: none;color: black;">Toggle</a></button>
               <button type="button" class="btn btn-outline-danger" onclick="deleteTask(${data[i].pk});">Delete</button>
             </div>
           </div>
@@ -127,7 +127,7 @@
       <div
       class="container-lg d-inline-flex-lg align-items-center justfiy-content-center"
       >
-      <div class="row row-cols-md-4 g-5" id="cards">
+      <div class="row row-cols-md-4 mx-auto" id="cards">
       </div>
     </div>
 
