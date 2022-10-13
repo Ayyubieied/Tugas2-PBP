@@ -1,5 +1,78 @@
 {% extends 'base.html' %}
 
+{% block meta %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    function formReset() {
+      document.getElementById("form-ajax").reset();
+    }
+
+    function deleteTask(id) {
+      $.ajax({
+        url: `./delete/${id}`,
+        dataType: "json",
+        success: function() {
+          $(`#${id}`).remove();
+        }
+      })
+    }
+
+    function cardReset() {
+      $("#cards").empty();
+      $.ajax({
+        url: "./json/",
+        dataType: "json",
+        success: function (data) {
+          for (i = 0; i < data.length; i++) {
+            var condition = "";
+            if (data[i].fields.is_finished == true) {
+              condition = "Selesai";
+            } else {
+              condition = "Belum Selesai";
+            }
+            var row = `<div class="col" id="${data[i].pk}">
+          <div class="card border-dark m-4" style="width: 18rem;">
+            <div class="card-header">
+              ${condition}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">${data[i].fields.title}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.date}</h6>
+              <p class="card-text">${data[i].fields.description}</p>
+              <button type="button" class="btn btn-outline-success"><a href="toggle/${data[i].pk}" style="text-decoration: none;color: black;">Toggle</a></button>
+              <button type="button" class="btn btn-outline-danger" onclick="deleteTask(${data[i].pk});">Delete</button>
+            </div>
+          </div>
+        </div>`;
+          $("#cards").append(row);
+          }
+        },
+      });
+    }
+
+    function addNewTask() {
+      $.ajax({
+        type: "POST",
+        url: "./add/",
+        data: {
+          title: $("#task_name").val(),
+          description: $("#task_description").val(),
+          csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+        },
+        success: function () {
+          cardReset();
+          formReset();
+        },
+      });
+    }
+
+    $(document).ready(function () {
+      cardReset();
+    });
+  </script>
+
+{% endblock meta %}
+
  {% block content %}
  <head> 
     <title> Todolist </title>
@@ -21,7 +94,8 @@
                     <a class="nav-link disabled" style="color: #FEEEEE;">{{username}}</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" style="color: #DFD3C3;" href="{% url 'todolist:add_todolist' %}">NewTask</a>
+                    <a class="btn btn-success" style="color: #DFD3C3; text-align: center; text-decoration: none;"
+                    data-bs-toggle="modal" data-bs-target="#modalNewTask">NewTask</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" style="color: #FF0000;" href="{% url 'todolist:logout' %}">Logout</a>
@@ -39,35 +113,84 @@
       <h5 class="mb-5" style="text-align: center; font-family: Lucida Console;">Let's begin your work!</h5>
 
       <div class="row row-cols-md-4 mx-auto" style="width: 90%; border-collapse: collapse; ">
-        {% for task in todo_list %}
-        <div class="col">
-          <div class="card border-primary mb-3">
-            <div class="card-body">
-              <h3 class="card-title">{{task.title}}</h3>
-              <h7 class="card-subtitle">{{task.date}}</h7>
-              <p class="card-text">{{task.description}}</p>
-              <p class="card-text">
-                {% if task.is_finished %}
-                Finished✅
-                {% else %}
-                On Progress🚫
-                {% endif %}
-              </p>
-              <p style="text-align: center;">
-                <a style="width: 5rem;" class="btn login_btn btn btn-danger form-control lg" href="delete/{{ task.id }}">Delete</a>
-                <a style="width: 5rem;" class="btn login_btn btn btn-info form-control lg" href="toggle/{{ task.id }}">Status</a></p>
-              </div>
-          </div>
-        </div>
-        {% endfor %}
       </div>
     </main>
 
-    <footer>
-      <h5 style="text-align: center;">Sesi terakhir login: {{ last_login }}</h5>
-    </footer>
+    
+  <div
+  class="modal fade"
+  id="modalNewTask"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  >
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Task</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          onclick="formReset();"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="" id="form-ajax">
+          {% csrf_token %} Task Name
+          <input
+            type="text"
+            name="title_task"
+            class="form-control"
+            id="task_name"
+          />
+          <p>&nbsp;</p>
+          Task Description
+          <input
+            type="text"
+            name="description_task"
+            class="form-control"
+            id="task_description"
+          />
 
+          <div class="mt-3" style="text-align: left; color: red">
+            {% if messages %}
+            <ul>
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          onclick="formReset();"
+        >
+          Close
+        </button>
+        <input
+          class="btn btn-success"
+          type="submit"
+          name="submit"
+          value="Submit"
+          id="submit"
+          onclick="addNewTask();"
+        />
+      </div>
+    </div>
+  </div>
+</div>
 
- </body>
+</body>
+
+<footer>
+  <p style="text-align: center">Sesi terakhir login: {{ last_login }}</p>
+</footer>
 
 {% endblock content %}

@@ -1,5 +1,78 @@
 {% extends 'base.html' %}
 
+{% block meta %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    function formReset() {
+      document.getElementById("form-ajax").reset();
+    }
+
+    function deleteTask(id) {
+      $.ajax({
+        url: `./delete/${id}`,
+        dataType: "json",
+        success: function() {
+          $(`#${id}`).remove();
+        }
+      })
+    }
+
+    function cardReset() {
+      $("#cards").empty();
+      $.ajax({
+        url: "./json/",
+        dataType: "json",
+        success: function (data) {
+          for (i = 0; i < data.length; i++) {
+            var condition = "";
+            if (data[i].fields.is_finished == true) {
+              condition = "Selesai";
+            } else {
+              condition = "Belum Selesai";
+            }
+            var row = `<div class="col" id="${data[i].pk}">
+          <div class="card border-dark m-4" style="width: 18rem;">
+            <div class="card-header">
+              ${condition}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">${data[i].fields.title}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.date}</h6>
+              <p class="card-text">${data[i].fields.description}</p>
+              <button type="button" class="btn btn-outline-success"><a href="toggle/${data[i].pk}" style="text-decoration: none;color: black;">Toggle</a></button>
+              <button type="button" class="btn btn-outline-danger" onclick="deleteTask(${data[i].pk});">Delete</button>
+            </div>
+          </div>
+        </div>`;
+          $("#cards").append(row);
+          }
+        },
+      });
+    }
+
+    function addNewTask() {
+      $.ajax({
+        type: "POST",
+        url: "./add/",
+        data: {
+          title: $("#task_name").val(),
+          description: $("#task_description").val(),
+          csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+        },
+        success: function () {
+          cardReset();
+          formReset();
+        },
+      });
+    }
+
+    $(document).ready(function () {
+      cardReset();
+    });
+  </script>
+
+{% endblock meta %}
+
  {% block content %}
 
 <head>

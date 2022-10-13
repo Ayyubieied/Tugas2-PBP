@@ -5,8 +5,9 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from todolist.models import Task
-from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
+from django.core import serializers
 
 # Create your views here.
 @login_required(login_url='/todolist/login/')
@@ -22,6 +23,24 @@ def show_todolist(request):
         'last_login': var,
     }
     return render(request, "todolist.html", context)
+
+@login_required(login_url='/todolist/login/')
+def add_task_ajax(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        if title != "" and description != "":
+            date = datetime.datetime.now()
+            data_ajax = {}
+            new_task = Task.objects.create(title=title, description=description, user=request.user, date=date)
+            data_ajax['title'] = title
+            data_ajax['description'] = description
+            data_ajax['date'] = date
+            return JsonResponse(data_ajax)
+        else :
+            list(messages.get_messages(request))
+            messages.error(request, "Harap isi nama dan deskripsi task")
+    return render(request, "add.html")
 
 def register(request):
     form = UserCreationForm()
@@ -76,7 +95,12 @@ def delete(request, id):
     data = Task.objects.get(id=id)
     data.delete()
     response = HttpResponseRedirect(reverse("todolist:show_todolist"))
-    return response
+    return JsonResponse({})
+
+@login_required(login_url='/todolist/login/')
+def show_json(request):
+    data = Task.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 @login_required(login_url='/todolist/login/')
 def set_status(request, id):
