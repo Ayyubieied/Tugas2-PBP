@@ -23,13 +23,12 @@
         url: "./json/",
         dataType: "json",
         success: function(data) {
-          alert(data)
           for (i = 0; i < data.length; i++) {
             var condition = "";
             if (data[i].fields.is_finished == true) {
-              condition = "Selesai";
+              condition = "Selesai ✅";
             } else {
-              condition = "Belum Selesai";
+              condition = " On Progress 🚫";
             }
             var row = `<div class="col" id="${data[i].pk}">
           <div class="card border-dark m-4" style="width: 18rem;">
@@ -40,7 +39,7 @@
               <h5 class="card-title">${data[i].fields.title}</h5>
               <h6 class="card-subtitle mb-2 text-muted">${data[i].fields.date}</h6>
               <p class="card-text">${data[i].fields.description}</p>
-              <button type="button" class="btn btn-outline-success"><a href="toggle/${data[i].pk}" style="text-decoration: none;color: black;">Toggle</a></button>
+              <button type="button" class="btn btn-outline-success"><a href="toggle/${data[i].pk}" style="text-decoration: none;color: black;">Status</a></button>
               <button type="button" class="btn btn-outline-danger" onclick="deleteTask(${data[i].pk});">Delete</button>
             </div>
           </div>
@@ -124,6 +123,14 @@
 
       <div class="row row-cols-md-4 mx-auto" style="width: 90%; border-collapse: collapse; ">
       </div>
+
+      <div
+      class="container-lg d-inline-flex-lg align-items-center justfiy-content-center"
+      >
+      <div class="row row-cols-md-4 g-5" id="cards">
+      </div>
+    </div>
+
     </main>
 
     
@@ -155,6 +162,7 @@
             class="form-control"
             id="task_name"
           />
+
           <p>&nbsp;</p>
           Task Description
           <input

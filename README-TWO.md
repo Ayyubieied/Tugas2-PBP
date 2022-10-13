@@ -1,3 +1,14 @@
+# Tugas 6 Javascript dan AJAX
+
+Pemrograman Berbasis Platform (CSGE602022) - diselenggarakan oleh Fakultas Ilmu Komputer Universitas Indonesia, Semester Ganjil 2022/2023
+
+## Nama : Ied Mubaraque Sultan Salahuddine El Ayyubie
+## NPM : 2106751120
+
+Contributor : Rakan Fasya Athhar Rayyan (2106750950)
+
+**Link Heroku** : [Link HerokuApp](https://tugas2-ayyubie.herokuapp.com/todolist/)
+
 ### **Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.**
 - Asynchronous programming: Suatu model pemrograman dimana suatu program dapat menjalankan beberapa tugas secara bersamaan. Suatu tugas akan berjalan tanpa harus menunggu function tersebut selesai (concurrent). Suatu tugas dilaksanakan, maka instruksi untuk menjalankan tugas lain masih dapat dijalankan. 
 
@@ -7,11 +18,14 @@
 Event-Driven programming merupakan adalah pola design perangkat lunak ketika suatu program dieksekusi berdasarkan event yang ada. Event-Driven Programming bergantung pada event, sehingga alur dari program dapat dijalankan secara tidak berurutan (sequential) dengan menerapkan proses asynchronous programming (concurrent). Pada tugas ini, salah satu penerapan dari Event-Driven Programming adalah ketika button `submit` di click, maka anak dijalankan suatu fungsi untuk membuat task baru. Fungsi ini akan selalu dijalankan jika terdapat event yaitu click (onclick)
 
 ### **Jelaskan penerapan asynchronous programming pada AJAX.**
-Asynchronus programming pada AJAX adalah ketika sebuah event terjadi, event tersebut akan menjalankan fungsionalitas AJAX. Misalnya pada tugas 6 ini ketika mengklik button create pada form untuk membuat task baru, akan dilakukan AJAX POST untuk mengirim data ke server. Setelah server selesai mengolah data tersebut, akan dijalankan callback function yang telah dibuat sebelumnya. Data yang ditangkap akan dikirimkan ke server tanpa melalui browser reload sehingga memberikan pengalaman browsing lebih baik.
+Asynchronus programming yang terdapat pada AJAX adalah ketika terdapat sebuah event, event tersebut akan menjalankan fungsionalitas AJAX. Jika dimisalkan pada tugas 6 terdapat button submit pada form untuk membuat task baru dan di click oleh User, maka akan dilakukan AJAX POST untuk mengirim data ke server. Setelah server selesai mengolah data tersebut, maka akan dijalankan callback function yang telah dibuat sebelumnya. Data yang ditangkap akan dikirimkan ke server tanpa melalui browser reload sehingga memberikan pengalaman browsing yang lebih baik
 
 ### **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.**
-AJAX GET 
-- Pada views.py, ditambahkan function untuk mengambil task yang sesuai dengan user login saat itu dalam bentuk JSON. Views akan terhubung setelah kita menambahkan routing path pada urls.py. Ketika website selesai load, AJAX GET terpanggil untuk mendapatkan task dalam bentuk JSON yang dimasukkan ke dalam masing-masing cards.
-##
-AJAX POST
-- Button create yang sebelumnya redirect ke todolist/create_task, kita ubah agar dapat memunculkan modal. Implementasinya, pada views.py ditambahkan function create_task_modal dan views akan terhubung setelah kita menambahkan routing path pada urls.py. Pada function diterapkan asynchronous programming sehingga task akan terupdate tanpa reload website. 
+- Fungsi `show_json` digunakan untuk return data input form dalam bentuk JSON
+- Manambahkan routing `/todolist/json` pada `urls.py` untuk fungsi `show_json`
+- Membuat fungsi JavaScript `cardReset()` dengan memanfaatkan AJAX GET untuk merender cards berdasarkan database JSON dari `/todolist/json`
+- `cardReset()` akan dijalankan ketika halaman sudah selesai dimuat untuk render cards
+- Membuat fungsi `add_ajax_task` untuk menambahkan data task baru 
+- Menambahkan routing `/todolist/add` pada `urls.py` untuk fungsi `add_ajax_task`
+- Membuat modal dengan menambahkan form untuk input nama dan deskripsi task yang kemudian akan ditampilkan dengan menambah cards baru
+- Membuat fungsi pada HTML dengan menggunakan tag `script` berupa javaScript dengan method addNewTask() dan tipe method POST untuk menerima input dari modal dan disubmit. Kemudian, input tersebut akan diproses oleh `add_ajax_task`. Setelah diproses, maka website akan update cards secara *Asynchronous* 

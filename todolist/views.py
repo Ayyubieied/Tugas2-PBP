@@ -25,7 +25,7 @@ def show_todolist(request):
     return render(request, "todolist.html", context)
 
 @login_required(login_url='/todolist/login/')
-def add_task_ajax(request):
+def add_ajax_task(request):
     if request.method == "POST":
         title = request.POST.get('title')
         description = request.POST.get('description')
