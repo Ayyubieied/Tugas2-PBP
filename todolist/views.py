@@ -98,9 +98,29 @@ def delete(request, id):
     return JsonResponse({})
 
 @login_required(login_url='/todolist/login/')
+def todolist_ajax(request):
+    ajax_todolist = Task.objects.filter(user=request.user)
+    context = {
+    'ajax_todolist' : ajax_todolist,
+    'username' :  request.user.username,
+    'last_login': request.COOKIES['last_login'],
+    }
+    return render(request, "todolist_ajax.html", context)
+
 def show_json(request):
     data = Task.objects.filter(user=request.user)
-    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+    return HttpResponse(serializers.serialize("json", data))
+
+# CREATE TASK MODAL
+def create_task_modal(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        date = datetime.datetime.now()
+        user = request.user
+        Task.objects.create(title=title, description=description, date=date, user=user)
+
+        return HttpResponse(b"CREATED", status=201)
 
 @login_required(login_url='/todolist/login/')
 def set_status(request, id):
